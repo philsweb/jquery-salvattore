@@ -1,0 +1,28 @@
+{
+  "name": "jquery-salvattore",
+  "homepage": "https://github.com/philsweb/jquery-salvattore",
+  "authors": [
+    "Philipp Nikolajev philipp@nikolajev.ee"
+  ],
+  "description": "jQuery plugin for Salvattore salvattore.js.org",
+  "main": "",
+  "keywords": [
+    "jquery",
+    "javascript",
+    "js",
+    "salvattore",
+    "wrapper"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "salvattore": "^1.0.9",
+    "jquery": "^3.3.1"
+  }
+}
