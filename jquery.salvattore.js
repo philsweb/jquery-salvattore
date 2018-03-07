@@ -32,7 +32,7 @@
         var minColumnWidth = minTileWidth + (tilePaddingX * 2);
 
         for (var i = 2; i <= maxColumnAmount; i++) {
-            mediaQueryData.push(minColumnWidth * i + scrollBarWidth);
+            mediaQueryData.push(Math.round(minColumnWidth * i + scrollBarWidth));
         }
 
         function getWindowWidthStep(windowWidth) {
