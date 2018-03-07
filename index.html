@@ -1,0 +1,119 @@
+<head>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/salvattore/dist/salvattore.min.js"></script>
+
+    <script src="jquery.salvattore.js"></script>
+
+    <script>
+        $(function () {
+            $('.salvattore').salvattore();
+
+            $('.salvattore').children().children().children().each(function(){
+                $(this).children('div').text($(this).width());
+            });
+
+            $(window).resize(function(){
+                $('.salvattore').children().children().children().each(function(){
+                    $(this).children('div').text($(this).width());
+                });
+            });
+
+            //$('div[second]').animate({height: 30}, 1500).delay(2000).animate({height: 300}, 1500);
+        });
+    </script>
+
+    <style>
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .salvattore{
+            opacity:0;
+        }
+
+        .column {
+            float: left;
+        }
+
+        .size-1of1 {
+            width: 100%;
+        }
+
+        .size-1of2 {
+            width: 50%;
+        }
+
+        .size-1of3 {
+            width: 33.333333%;
+        }
+
+        .size-1of4 {
+            width: 25%;
+        }
+
+        .size-1of5 {
+            width: 20%;
+        }
+
+        .size-1of6 {
+            width: 16.6666%;
+        }
+
+        .size-1of7 {
+            width: 14.2857%;
+        }
+
+        .size-1of8 {
+            width: 12.5%;
+        }
+
+        .size-1of9 {
+            width: 11.1111%;
+        }
+
+        .size-1of10 {
+            width: 10%;
+        }
+
+    </style>
+
+
+
+</head>
+
+<body>
+
+<div class="salvattore" data-columns>
+    <div style="background-color: #ff0b08;height: 250px;">Item #1<div></div></div>
+
+    <div second style="background-color: #25ab22;height: 130px;">Item #2<div></div></div>
+
+    <div style="background-color: #224f80;height: 180px;">Item #3<div></div></div>
+
+    <div style="background-color: #80180e;height: 190px;">Item #4<div></div></div>
+
+    <div style="background-color: #7e8080;height: 210px;">Item #5<div></div></div>
+
+    <div style="background-color: #d4d61c;height: 170px;">Item #6<div></div></div>
+
+    <div style="background-color: #ff0b08;height: 250px;">Item #7<div></div></div>
+
+    <div style="background-color: #25ab22;height: 130px;">Item #8<div></div></div>
+
+    <div style="background-color: #224f80;height: 180px;">Item #9<div></div></div>
+
+    <div style="background-color: #80180e;height: 190px;">Item #10<div></div></div>
+
+    <div style="background-color: #7e8080;height: 210px;">Item #11<div></div></div>
+
+    <div style="background-color: #d4d61c;height: 170px;">Item #12<div></div></div>
+</div>
+
+</body>
+
+<!-- <script src="bower_components/salvattore/dist/salvattore.js"></script> -->
+
+
+

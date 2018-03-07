@@ -1,0 +1,84 @@
+<head>
+    <!-- <script src="bower_components/jquery/dist/jquery.js"></script> -->
+
+
+    <style>
+        @media screen and (max-width: 700px) {
+            .grid[data-columns]::before {
+                content: '1 .column.size-1of1';
+            }
+        }
+
+        @media screen and (min-width: 701px) and (max-width: 768px) {
+            .grid[data-columns]::before {
+                content: '2 .column.size-1of2';
+            }
+        }
+
+        @media screen and (min-width: 769px)  and (max-width: 1200px) {
+            .grid[data-columns]::before {
+                content: '3 .column.size-1of3';
+            }
+        }
+
+        @media screen and (min-width: 1201px)  and (max-width: 1800px) {
+            .grid[data-columns]::before {
+                content: '4 .column.size-1of4';
+            }
+        }
+
+        @media screen and (min-width: 1801px) {
+            .grid[data-columns]::before {
+                content: '5 .column.size-1of5';
+            }
+        }
+
+        .column {
+            float: left;
+        }
+
+        .size-1of1 {
+            width: 100%;
+        }
+
+        .size-1of2 {
+            width: 50%;
+        }
+
+        .size-1of3 {
+            width: 33.333333%;
+        }
+
+        .size-1of4 {
+            width: 25%;
+        }
+
+        .size-1of5 {
+            width: 20%;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="grid" data-columns>
+    <div style="background-color: red;height: 100px;">
+        <div>Item #1</div>
+    </div>
+
+    <div style="background-color: #25ab22;height: 130px;">Item #2</div>
+
+    <div style="background-color: #224f80;height: 180px;">Item #3</div>
+
+    <div style="background-color: #80180e;height: 120px;">Item #4</div>
+
+    <div style="background-color: #7e8080;height: 210px;">Item #5</div>
+
+    <div style="background-color: #d4d61c;height: 170px;">Item #6</div>
+</div>
+
+</body>
+
+<script src="bower_components/salvattore/dist/salvattore.min.js"></script>
