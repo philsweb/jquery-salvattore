@@ -23,6 +23,8 @@
   ],
   "dependencies": {
     "salvattore": "^1.0.9",
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "jquery.helper": "*",
+    "js.helper": "*"
   }
 }

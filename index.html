@@ -2,13 +2,16 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/salvattore/dist/salvattore.min.js"></script>
 
-    <script src="jquery.salvattore.js"></script>
+    <script src="bower_components/js.helper/js.helper.js"></script>
+    <script src="bower_components/jquery.helper/jquery.helper.js"></script>
+    <script src="jquery.salvattore.min.js"></script>
 
     <script>
         $(function () {
-            $('.salvattore').salvattore({tilePaddingX: 15, maxColumnAmount: 8});
+            $('.salvattore').salvattoreInit({tilePaddingX: 15, maxColumnAmount: 8});
 
             $('.salvattore').children().children().children().each(function () {
+                $(this).css({backgroundColor: jsHelper.getRandomColor(), height: jsHelper.getRandomInt(200, 350)});
                 $(this).children('div').text($(this).width());
             });
 
@@ -18,24 +21,16 @@
                 });
             });
 
-            //$('div[second]').animate({height: 30}, 1500).delay(2000).animate({height: 300}, 1500);
+            //$('div[second]').animate({height: 50}, 1500).delay(2000).animate({height: 300}, 1500);
         });
     </script>
+
+    <link rel="stylesheet" type="text/css" href="jquery.salvattore.min.css">
 
     <style>
         html, body {
             margin: 0;
             padding: 0;
-        }
-    </style>
-    
-    <style>
-        .salvattore {
-            opacity: 0;
-        }
-
-        .column {
-            float: left;
         }
     </style>
 
@@ -45,58 +40,104 @@
 <body>
 
 <div class="salvattore" data-columns>
-    <div style="background-color: #ff0b08;height: 250px;">Item #1
+    <div>Item #1
         <div></div>
     </div>
 
-    <div second style="background-color: #25ab22;height: 130px;">Item #2
+    <div second>Item #2
         <div></div>
     </div>
 
-    <div style="background-color: #224f80;height: 180px;">Item #3
+    <div>Item #3
         <div></div>
     </div>
 
-    <div style="background-color: #80180e;height: 190px;">Item #4
+    <div>Item #4
         <div></div>
     </div>
 
-    <div style="background-color: #7e8080;height: 210px;">Item #5
+    <div>Item #5
         <div></div>
     </div>
 
-    <div style="background-color: #d4d61c;height: 170px;">Item #6
+    <div>Item #6
         <div></div>
     </div>
 
-    <div style="background-color: #ff0b08;height: 250px;">Item #7
+    <div>Item #7
         <div></div>
     </div>
 
-    <div style="background-color: #25ab22;height: 130px;">Item #8
+    <div>Item #8
         <div></div>
     </div>
 
-    <div style="background-color: #224f80;height: 180px;">Item #9
+    <div>Item #9
         <div></div>
     </div>
 
-    <div style="background-color: #80180e;height: 190px;">Item #10
+    <div>Item #10
         <div></div>
     </div>
 
-    <div style="background-color: #7e8080;height: 210px;">Item #11
+    <div>Item #11
         <div></div>
     </div>
 
-    <div style="background-color: #d4d61c;height: 170px;">Item #12
+    <div>Item #12
+        <div></div>
+    </div>
+
+    <div>Item #13
+        <div></div>
+    </div>
+
+    <div>Item #14
+        <div></div>
+    </div>
+
+    <div>Item #15
+        <div></div>
+    </div>
+
+    <div>Item #16
+        <div></div>
+    </div>
+
+    <div>Item #17
+        <div></div>
+    </div>
+
+    <div>Item #18
+        <div></div>
+    </div>
+
+    <div>Item #19
+        <div></div>
+    </div>
+
+    <div>Item #20
+        <div></div>
+    </div>
+
+    <div>Item #21
+        <div></div>
+    </div>
+
+    <div>Item #22
+        <div></div>
+    </div>
+
+    <div>Item #23
+        <div></div>
+    </div>
+
+    <div>Item #24
         <div></div>
     </div>
 </div>
 
 </body>
-
-<!-- <script src="bower_components/salvattore/dist/salvattore.js"></script> -->
 
 
 

@@ -1,10 +1,18 @@
+/*!
+ Salvattore jQuery Plugin
+ @name  jquery.salvattore.js
+ @description a jQuery plugin for using Salvattore (https://salvattore.js.org)
+ @version 1.0.0
+ @copyright (c) 2018 Philipp Nikolajev (https://nikolajev.ee)
+ @license Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
+ */
 (function ($) {
-    $.fn.salvattore = function (options) {
+    $.fn.salvattoreInit = function (options) {
 
         "use strict";
 
-        var minTileWidth = (options === undefined || options.minTileWidth === undefined) ? 350 : options.minTileWidth,
-            maxTileWidth = (options === undefined || options.maxTileWidth === undefined) ? 450 : options.maxTileWidth,
+        var minTileWidth = (options === undefined || options.minTileWidth === undefined) ? 100 : options.minTileWidth,
+            maxTileWidth = (options === undefined || options.maxTileWidth === undefined) ? 150 : options.maxTileWidth,
             maxColumnAmount = (options === undefined || options.maxColumnAmount === undefined) ? 10 : options.maxColumnAmount,
             tilePaddingX = (options === undefined || options.tilePaddingX === undefined) ? 5 : options.tilePaddingX,
             tilePaddingY = (options === undefined || options.tilePaddingY === undefined) ? 5 : options.tilePaddingY,
@@ -13,15 +21,7 @@
 
         $('body').css('min-width', minTileWidth + tilePaddingX * 2);
 
-        // @todo jquery-helper
-        function getScrollBarWidth() {
-            var $outer = $('<div>').css({visibility: 'hidden', width: 100, overflow: 'scroll'}).appendTo('body'),
-                widthWithScroll = $('<div>').css({width: '100%'}).appendTo($outer).outerWidth();
-            $outer.remove();
-            return 100 - widthWithScroll;
-        }
-
-        var scrollBarWidth = getScrollBarWidth(),
+        var scrollBarWidth = $.getScrollBarWidth(),
             mediaQueryData = [],
             minColumnWidth = minTileWidth + (tilePaddingX * 2);
 
@@ -41,8 +41,9 @@
         }
 
         function setTilePadding() {
-            var windowWidth = $(window).width() + scrollBarWidth;
-            var tileWidth = $(window).width() / getWindowWidthStep(windowWidth);
+            var windowWidth = $(window).width() + scrollBarWidth,
+                tileWidth = $(window).width() / getWindowWidthStep(windowWidth),
+                tileContent = $('.tile-content');
 
             if (tileWidth > maxTileWidth) {
                 var padding = Math.round((tileWidth - maxTileWidth) / 2) + 1;
@@ -51,12 +52,12 @@
                     padding = tilePaddingX;
                 }
 
-                $('.tile-content').css('padding', tilePaddingY + 'px ' + padding +
+                tileContent.css('padding', tilePaddingY + 'px ' + padding +
                     'px ' + tilePaddingY + 'px ' + padding + 'px');
                 return;
             }
 
-            $('.tile-content').css('padding', tilePaddingY + 'px ' + tilePaddingX + 'px ' + tilePaddingY +
+            tileContent.css('padding', tilePaddingY + 'px ' + tilePaddingX + 'px ' + tilePaddingY +
                 'px ' + tilePaddingX + 'px');
         }
 
@@ -96,13 +97,8 @@
 
         var columnWidths = "";
 
-        // @todo js-helper
-        function round(value, decimals) {
-            return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
-        }
-
         for (i = 1; i <= maxColumnAmount; i++) {
-            columnWidths += ".size-1of" + i + "{width: " + round((100 / i), 5) + "%;}";
+            columnWidths += ".size-1of" + i + "{width: " + jsHelper.round((100 / i), 5) + "%;}";
         }
 
         var columnWidthsStyle = $('<style>');
