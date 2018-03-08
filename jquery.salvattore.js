@@ -3,19 +3,17 @@
 
         "use strict";
 
-        var minTileWidth = 180;
-        var maxTileWidth = 220;
-        var maxColumnAmount = 10; // Max 10
+        var minTileWidth = (options === undefined || options.minTileWidth === undefined) ? 350 : options.minTileWidth,
+            maxTileWidth = (options === undefined || options.maxTileWidth === undefined) ? 450 : options.maxTileWidth,
+            maxColumnAmount = (options === undefined || options.maxColumnAmount === undefined) ? 10 : options.maxColumnAmount,
+            tilePaddingX = (options === undefined || options.tilePaddingX === undefined) ? 5 : options.tilePaddingX,
+            tilePaddingY = (options === undefined || options.tilePaddingY === undefined) ? 5 : options.tilePaddingY,
+            animationDuration = (options === undefined || options.animationDuration === undefined) ? 50 : options.animationDuration,
+            fadeInSpeed = (options === undefined || options.fadeInSpeed === undefined) ? 1.5 : options.fadeInSpeed;
 
-        var tilePaddingX = 5;
-        var tilePaddingY = 5;
+        $('body').css('min-width', minTileWidth + tilePaddingX * 2);
 
-        var animationDuration = 50;
-        var fadeInSpeed = 1.5;
-
-        // @todo minTileWidth and tilePaddingX conflict!!!
-
-
+        // @todo jquery-helper
         function getScrollBarWidth() {
             var $outer = $('<div>').css({visibility: 'hidden', width: 100, overflow: 'scroll'}).appendTo('body'),
                 widthWithScroll = $('<div>').css({width: '100%'}).appendTo($outer).outerWidth();
@@ -23,13 +21,9 @@
             return 100 - widthWithScroll;
         }
 
-        var scrollBarWidth = getScrollBarWidth();
-
-        var style = $('<style>');
-
-        var mediaQueryData = [];
-
-        var minColumnWidth = minTileWidth + (tilePaddingX * 2);
+        var scrollBarWidth = getScrollBarWidth(),
+            mediaQueryData = [],
+            minColumnWidth = minTileWidth + (tilePaddingX * 2);
 
         for (var i = 2; i <= maxColumnAmount; i++) {
             mediaQueryData.push(Math.round(minColumnWidth * i + scrollBarWidth));
@@ -46,14 +40,14 @@
             return state;
         }
 
-        function setTilePadding(){
+        function setTilePadding() {
             var windowWidth = $(window).width() + scrollBarWidth;
             var tileWidth = $(window).width() / getWindowWidthStep(windowWidth);
 
-            if(tileWidth > maxTileWidth){
+            if (tileWidth > maxTileWidth) {
                 var padding = Math.round((tileWidth - maxTileWidth) / 2) + 1;
 
-                if(padding < tilePaddingX){
+                if (padding < tilePaddingX) {
                     padding = tilePaddingX;
                 }
 
@@ -96,8 +90,23 @@
             }
         );
 
-        $('head').prepend(style.append(mediaQueries));
+        var mediaQueriesStyle = $('<style>'),
+            head = $('head');
+        head.prepend(mediaQueriesStyle.append(mediaQueries));
 
+        var columnWidths = "";
+
+        // @todo js-helper
+        function round(value, decimals) {
+            return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
+        }
+
+        for (i = 1; i <= maxColumnAmount; i++) {
+            columnWidths += ".size-1of" + i + "{width: " + round((100 / i), 5) + "%;}";
+        }
+
+        var columnWidthsStyle = $('<style>');
+        head.prepend(columnWidthsStyle.append(columnWidths));
 
         function initSalvattore(element) {
             salvattore.registerGrid(element);
@@ -106,7 +115,7 @@
 
         return this.each(function () {
             var tileContent = $("<div class='tile-content'/>");
-            $(this).children().wrap(tileContent/*.css('padding', '0 15px 0 15px')*/);
+            $(this).children().wrap(tileContent);
 
             initSalvattore(this);
 
