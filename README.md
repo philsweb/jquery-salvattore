@@ -12,7 +12,7 @@ https://salvattore.js.org/
 
 ### Usage
 
-`NB!` Dependends on:
+`NB!` Depends on:
 
 ```
 bower install js.helper --save
@@ -30,7 +30,7 @@ https://github.com/philsweb/jquery.helper
 $(...).salvattoreInit(options);
 ```
 
-##### Defaults options
+##### Default options
 
 ```
 minTileWidth: 100 (px),
